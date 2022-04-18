@@ -1,0 +1,8 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+.idea/
+*.arff
+*.pkl
+__pycache__/
+.DS_Store
