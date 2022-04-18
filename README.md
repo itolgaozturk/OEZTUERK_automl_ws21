@@ -40,7 +40,7 @@ AutoML | 0.152
 I provided the datasets in case there would be an update in the online version
 I also provided my resulting files in case you don't want to rerun
 
-##An example resulting graph:
+### An example resulting graph
 Plot of an pareto front, also including the hypervolume plot
 
 ![alt text](example.png)
