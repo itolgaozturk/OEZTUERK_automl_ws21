@@ -71,8 +71,9 @@ def main(seed, filename, time_budget, val_size_hpo, study_save_name=None):
         acc_GB_without_AutoML_sum += acc_GB_without_AutoML
 
         if study_save_name == "auto":
-            study_save_name = "study_cv_" + str(n + 1) + "_temp.pkl"
+            study_save_name = filename[:-5] + "_" + str(time_budget) + "_cv_" + str(n + 1) + ".pkl"
         study = automl(df_train, seed, time_budget, val_size_hpo, study_save_name)
+        study_save_name = "auto"
         plt.title("Pareto Front: CV Fold " + str(n+1))
 
         # Part to use our study findings on testing data
@@ -99,9 +100,9 @@ def main(seed, filename, time_budget, val_size_hpo, study_save_name=None):
 if __name__ == "__main__":
     # ps run for at least 30 secs for each CV fold
     seed = 27
-    filename = "madeline.arff"
-    time_budget = 45
+    filename = "madelon.arff"
+    time_budget = 720
     val_size_hpo = 0.3
     # use "auto" for study_save_name if needed
-    study_save_name = None
+    study_save_name = "auto"
     main(seed, filename, time_budget, val_size_hpo, study_save_name)

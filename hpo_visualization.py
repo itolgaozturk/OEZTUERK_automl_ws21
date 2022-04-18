@@ -82,8 +82,8 @@ def list_hypervolume_best_trials(study):
     return num_feature_trials, mis_class_trials
 
 if __name__ == '__main__':
-    # to try visualizations
 
+    # to try visualizations
     study = joblib.load('study_cv_1.pkl')
 
     #fig = optuna.visualization.plot_param_importances(study, target=lambda t: t.values[1])
