@@ -82,17 +82,21 @@ def list_hypervolume_best_trials(study):
     return num_feature_trials, mis_class_trials
 
 if __name__ == '__main__':
-
     # to try visualizations
-    study = joblib.load('study_cv_1.pkl')
+    #study1 = joblib.load('results/madelon_720_cv_1.pkl')
+    study2 = joblib.load('results/madelon_720_cv_2.pkl')
 
-    #fig = optuna.visualization.plot_param_importances(study, target=lambda t: t.values[1])
+    #fig = optuna.visualization.plot_param_importances(study1, target=lambda t: t.values[1], target_name="mis_rate")
+    fig2 = optuna.visualization.plot_param_importances(study2, target=lambda t: t.values[1], target_name="Misclassification Rate")
 
-    #fig = optuna.visualization.plot_slice(study, target=lambda t: t.values[1])
+    #fig = optuna.visualization.plot_slice(study1, target=lambda t: t.values[1])
 
-    plt.fig = optuna.visualization.matplotlib.plot_pareto_front(study, include_dominated_trials=True,
-                                                                target_names=["num_features", "mis_rate"])
-    num_feature_trials, mis_class_trials = list_hypervolume_best_trials(study)
-    plot_hyper_volume(x=num_feature_trials, y=mis_class_trials)
+    #fig = optuna.visualization.plot_contour(study1, target=lambda t: t.values[1])
 
-    plt.show()
+    fig2.show()
+
+    #plt.fig = optuna.visualization.matplotlib.plot_pareto_front(study, include_dominated_trials=True,
+     #                                                           target_names=["num_features", "mis_rate"])
+    #num_feature_trials, mis_class_trials = list_hypervolume_best_trials(study)
+    #plot_hyper_volume(x=num_feature_trials, y=mis_class_trials)
+    #plt.show()

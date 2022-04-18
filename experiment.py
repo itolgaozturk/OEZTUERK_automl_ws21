@@ -100,7 +100,7 @@ def main(seed, filename, time_budget, val_size_hpo, study_save_name=None):
 if __name__ == "__main__":
     # ps run for at least 30 secs for each CV fold
     seed = 27
-    filename = "madelon.arff"
+    filename = "madeline.arff"
     time_budget = 720
     val_size_hpo = 0.3
     # use "auto" for study_save_name if needed
