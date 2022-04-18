@@ -1,3 +1,5 @@
+import os.path
+
 from scipy.io import arff
 from sklearn.feature_selection import SelectKBest
 from sklearn.preprocessing import StandardScaler
@@ -25,13 +27,13 @@ def feature_filter(hpo, X_train, y_train, X_test, trial=None, feat_threshold=Non
     return X_train_filtered, X_test_filtered, feat_threshold
 
 def data_loader(filename, seed, frac=1):
-    data = arff.loadarff(filename)
+    data = arff.loadarff(os.path.join("datasets", filename))
     df = pd.DataFrame(data[0])
     if filename == "madelon.arff":
         df['class'] = df['Class'].str.decode("utf-8")
         df = df.drop("Class", axis=1)
     elif filename == "madeline.arff":
-        df['Class'] = df['class'].str.decode("utf-8")
+        df['class'] = df['class'].str.decode("utf-8")
     else:
         print("Please give either madeline or madelon datasets")
     if frac < 1:

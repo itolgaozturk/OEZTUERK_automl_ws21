@@ -1,3 +1,5 @@
+import os.path
+
 import joblib
 import optuna as optuna
 from sklearn.model_selection import train_test_split
@@ -69,7 +71,7 @@ def automl(df, seed, time_budget, test_size, study_save_name=None):
     study.optimize(func, timeout=time_budget, show_progress_bar=True)
     # you can save the study and load back again to avoid multiple runs
     if study_save_name != None:
-        joblib.dump(study, study_save_name)
+        joblib.dump(study, os.path.join("results", study_save_name))
     # plot the trials and best trials
     plt.fig = optuna.visualization.matplotlib \
         .plot_pareto_front(study, include_dominated_trials=True,
@@ -82,6 +84,10 @@ def automl(df, seed, time_budget, test_size, study_save_name=None):
 
 if __name__ == '__main__':
     seed = 27
+    filename = "madelon.arff"
+    time_budget = 30
+    test_size = 0.3
+    study_save_name = None
     df = data_loader("madelon.arff", seed)
-    study = automl(df, seed, 15, 0.3)
+    study = automl(df, seed, time_budget, test_size, study_save_name)
     plt.show()

@@ -45,7 +45,7 @@ def optimized_HP_refit(best_trial, X_train_filtered_scaled, y_train, X_test_filt
 
     return acc_AutoML
 
-def main(seed, filename, time_budget, val_size_hpo, save_study=False):
+def main(seed, filename, time_budget, val_size_hpo, study_save_name=None):
     df = data_loader(filename, seed)
     kfold = StratifiedKFold(n_splits=10, shuffle=True, random_state=seed)
     splits = kfold.split(df, df['class'])
@@ -70,12 +70,10 @@ def main(seed, filename, time_budget, val_size_hpo, save_study=False):
         acc_ensemble_sum += acc_ensemble
         acc_GB_without_AutoML_sum += acc_GB_without_AutoML
 
-        if save_study == True:
+        if study_save_name == "auto":
             study_save_name = "study_cv_" + str(n + 1) + "_temp.pkl"
-        else:
-            study_save_name = None
         study = automl(df_train, seed, time_budget, val_size_hpo, study_save_name)
-        plt.title("CV Fold: " + str(n+1))
+        plt.title("Pareto Front: CV Fold " + str(n+1))
 
         # Part to use our study findings on testing data
         best_trial = find_best_trial(study.best_trials)
@@ -100,4 +98,10 @@ def main(seed, filename, time_budget, val_size_hpo, save_study=False):
 
 if __name__ == "__main__":
     # ps run for at least 30 secs for each CV fold
-    main(27, "madelon.arff", time_budget=60, val_size_hpo=0.2, save_study=False)
+    seed = 27
+    filename = "madeline.arff"
+    time_budget = 45
+    val_size_hpo = 0.3
+    # use "auto" for study_save_name if needed
+    study_save_name = None
+    main(seed, filename, time_budget, val_size_hpo, study_save_name)
