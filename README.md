@@ -31,16 +31,18 @@ Relative number of features: 0.0257
 
 ### On Madeline
 
-time_budget is used as 300 seconds/fold (around 250 trials/fold) and val_size_hpo is used as 0.3
+time_budget is used as 720 seconds/fold (around 500 trials/fold) and val_size_hpo is used as 0.3
 
 | Model                     | Misclassification Rate |
 |---------------------------|------------------------|
 | Random Forest             | 0.227                  |
 | LR+SVM+NB                 | 0.408                  |
 | (extra) GB without AutoML | 0.224                  |
-| AutoML                    | 0.138                  |
+| AutoML                    | 0.149                  |
 
-I provided the datasets in case there would be an update in the online version.
+Relative number of features: 0.116
+
+In addition, I provided the datasets in case there would be an update in the online version.
 I also provided my resulting files in case you don't want to re-run
 
 ### Resulting Visualization Examples
