@@ -2,6 +2,6 @@
 /shelf/
 /workspace.xml
 .idea/
-*.pkl
+#*.pkl
 __pycache__/
 .DS_Store
