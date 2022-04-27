@@ -1,4 +1,3 @@
-# automl_exam
 Optimizing Gradient Boosting Hyperparameters using Bayesian Optimisation
 
 I also added untuned Gradient Boosting model to compare with tuned version
